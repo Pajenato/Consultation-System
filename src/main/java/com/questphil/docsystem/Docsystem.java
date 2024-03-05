@@ -3,9 +3,9 @@
  */
 package com.questphil.docsystem;
 
-import com.questphil.docsystem.dao.PatientDao;
-import com.questphil.docsystem.dao.impl.PatientDaoImpl;
-import com.questphil.docsystem.entity.PatientEntity;
+import com.questphil.docsystem.backend.dao.PatientDao;
+import com.questphil.docsystem.backend.dao.impl.PatientDaoImpl;
+import com.questphil.docsystem.backend.entity.PatientEntity;
 import com.questphil.docsystem.forms.addForm;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;

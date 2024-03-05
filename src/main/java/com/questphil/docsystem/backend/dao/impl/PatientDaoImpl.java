@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.questphil.docsystem.dao.impl;
+package com.questphil.docsystem.backend.dao.impl;
 
-import com.questphil.docsystem.dao.PatientDao;
-import com.questphil.docsystem.entity.PatientEntity;
+import com.questphil.docsystem.backend.dao.PatientDao;
+import com.questphil.docsystem.backend.entity.PatientEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.NoResultException;

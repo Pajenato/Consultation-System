@@ -5,10 +5,10 @@
 package com.questphil.docsystem.forms;
 
 //import consultapp.db.Database;
-import com.questphil.docsystem.dao.PatientDao;
-import com.questphil.docsystem.dao.impl.PatientDaoImpl;
-import com.questphil.docsystem.entity.PatientEntity;
-import com.questphil.docsystem.utils.EntityManagerUtil;
+import com.questphil.docsystem.backend.dao.PatientDao;
+import com.questphil.docsystem.backend.dao.impl.PatientDaoImpl;
+import com.questphil.docsystem.backend.entity.PatientEntity;
+import com.questphil.docsystem.backend.utils.EntityManagerUtil;
 import jakarta.persistence.EntityManager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
