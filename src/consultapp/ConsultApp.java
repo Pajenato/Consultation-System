@@ -4,6 +4,9 @@
  */
 package consultapp;
 
+import consultapp.forms.addForm;
+import javax.swing.JFrame;
+
 /**
  *
  * @author User
@@ -14,7 +17,9 @@ public class ConsultApp {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        addForm form = new addForm();
+        form.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        form.setVisible(true);
     }
     
 }
