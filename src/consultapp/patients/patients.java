@@ -40,10 +40,10 @@ public class patients extends javax.swing.JFrame {
 
         jPanel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 24)); // NOI18N
         jLabel1.setText("Patients Records");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 18)); // NOI18N
         jLabel2.setText("LOGGED IN AS :");
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -53,7 +53,7 @@ public class patients extends javax.swing.JFrame {
         });
 
         jButton1.setBackground(new java.awt.Color(0, 204, 204));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("SEARCH");
         jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -63,6 +63,7 @@ public class patients extends javax.swing.JFrame {
             }
         });
 
+        jList1.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -71,7 +72,7 @@ public class patients extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jList1);
 
         jButton2.setBackground(new java.awt.Color(0, 204, 204));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("EDIT");
         jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -82,7 +83,7 @@ public class patients extends javax.swing.JFrame {
         });
 
         jButton3.setBackground(new java.awt.Color(0, 0, 0));
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("LOG OUT");
         jButton3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -107,8 +108,8 @@ public class patients extends javax.swing.JFrame {
                             .addComponent(jScrollPane1)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jTextField1)
-                                .addGap(48, 48, 48)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(33, 33, 33)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(0, 0, Short.MAX_VALUE))

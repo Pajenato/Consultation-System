@@ -45,10 +45,10 @@ public class patients2 extends javax.swing.JFrame {
 
         jPanel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 24)); // NOI18N
         jLabel1.setText("Patients Records");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 18)); // NOI18N
         jLabel2.setText("LOGGED IN AS :");
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -58,7 +58,7 @@ public class patients2 extends javax.swing.JFrame {
         });
 
         jButton1.setBackground(new java.awt.Color(0, 204, 204));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("SEARCH");
         jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -68,6 +68,7 @@ public class patients2 extends javax.swing.JFrame {
             }
         });
 
+        jList1.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -76,7 +77,7 @@ public class patients2 extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jList1);
 
         jButton2.setBackground(new java.awt.Color(0, 204, 204));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("ADD");
         jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -87,7 +88,7 @@ public class patients2 extends javax.swing.JFrame {
         });
 
         jButton3.setBackground(new java.awt.Color(0, 0, 0));
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("LOG OUT");
         jButton3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -98,7 +99,7 @@ public class patients2 extends javax.swing.JFrame {
         });
 
         jButton4.setBackground(new java.awt.Color(0, 204, 204));
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton4.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 14)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("VIEW ARCHIVED PATIENTS");
         jButton4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -109,7 +110,7 @@ public class patients2 extends javax.swing.JFrame {
         });
 
         jButton5.setBackground(new java.awt.Color(0, 204, 204));
-        jButton5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton5.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 14)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("SALES");
         jButton5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -120,7 +121,7 @@ public class patients2 extends javax.swing.JFrame {
         });
 
         jButton6.setBackground(new java.awt.Color(0, 204, 204));
-        jButton6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton6.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 14)); // NOI18N
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setText("EDIT");
         jButton6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -131,7 +132,7 @@ public class patients2 extends javax.swing.JFrame {
         });
 
         jButton7.setBackground(new java.awt.Color(0, 204, 204));
-        jButton7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton7.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 14)); // NOI18N
         jButton7.setForeground(new java.awt.Color(255, 255, 255));
         jButton7.setText("ARCHIVE");
         jButton7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -142,7 +143,7 @@ public class patients2 extends javax.swing.JFrame {
         });
 
         jButton8.setBackground(new java.awt.Color(0, 204, 204));
-        jButton8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton8.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 14)); // NOI18N
         jButton8.setForeground(new java.awt.Color(255, 255, 255));
         jButton8.setText("UNARCHIVE");
         jButton8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -162,8 +163,8 @@ public class patients2 extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jTextField1)
-                        .addGap(48, 48, 48)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(33, 33, 33)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
