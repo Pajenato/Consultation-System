@@ -8,7 +8,7 @@ package com.questphil.docsystem.forms;
 import com.questphil.docsystem.backend.dao.PatientDao;
 import com.questphil.docsystem.backend.dao.impl.PatientDaoImpl;
 import com.questphil.docsystem.backend.entity.PatientEntity;
-import com.questphil.docsystem.backend.utils.EntityManagerUtil;
+import com.questphil.docsystem.backend.utils.EntityManagerProvider;
 import jakarta.persistence.EntityManager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,9 +27,10 @@ public class addForm extends javax.swing.JFrame {
 
     public void insertRecord() {
         // Persistence tools
-        EntityManager entityManager = EntityManagerUtil.getEntityManager();
-        PatientDao patientDao = new PatientDaoImpl(entityManager);
+        EntityManager entityManager = EntityManagerProvider.getEntityManager();
+        PatientDao patientDao = new PatientDaoImpl(entityManager, PatientEntity.class);
 
+        // Patient Details
         String firstName = firstNameField.getText();
         String lastName = lastNameField.getText();
         String middleInitial = middleInitialField.getText();
@@ -51,6 +52,7 @@ public class addForm extends javax.swing.JFrame {
         // Check for existing patient record
         Optional<PatientEntity> existingPatient = patientDao
                 .findExistingPatient(firstName, lastName, middleInitial);
+
         if (existingPatient.isEmpty()) {
             PatientEntity patientEntity = new PatientEntity();
 
@@ -70,6 +72,9 @@ public class addForm extends javax.swing.JFrame {
                 // Persist into database
                 patientDao.save(patientEntity);
                 JOptionPane.showMessageDialog(null, "Record added");
+
+                entityManager.close();
+
             } catch (Exception ex) {
                 System.out.println(ex.getMessage());
                 JOptionPane.showMessageDialog(null, "An error has occured " + ex.getMessage());

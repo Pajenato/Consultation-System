@@ -13,12 +13,16 @@ import java.util.Optional;
  * @author russe
  */
 public interface PatientDao {
+
     void save(PatientEntity patientEntity);
+
     void update(PatientEntity patientEntity);
+
     void delete(PatientEntity patientEntity);
-    
+
     Optional<PatientEntity> findById(Long id);
-    List<PatientEntity> findAll();
-    
+
     Optional<PatientEntity> findExistingPatient(String firstName, String lastName, String middleInitial);
+
+    List<PatientEntity> findAll();
 }
