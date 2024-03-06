@@ -25,7 +25,7 @@ public class addForm extends javax.swing.JFrame {
 
     public static String user;
 
-    public void insertRecord() {
+    private void insertRecord() {
         // Persistence tools
         EntityManager entityManager = EntityManagerProvider.getEntityManager();
         PatientDao patientDao = new PatientDaoImpl(entityManager, PatientEntity.class);

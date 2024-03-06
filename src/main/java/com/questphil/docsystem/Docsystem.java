@@ -11,6 +11,7 @@ import com.questphil.docsystem.patients.patients;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import java.awt.Dimension;
 import javax.swing.JFrame;
 
 /**
@@ -26,6 +27,7 @@ public class Docsystem {
 //        form.setVisible(true);
         patients form = new patients();
         form.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        form.setMinimumSize(new Dimension(600, 900));
         form.setVisible(true);
 
     }

@@ -14,6 +14,7 @@ import jakarta.persistence.EntityManager;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -21,6 +22,8 @@ import javax.swing.event.ChangeListener;
 
 import java.util.regex.PatternSyntaxException;
 import javax.swing.RowFilter;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -40,21 +43,21 @@ public class patients extends javax.swing.JFrame {
 
         List<PatientEntity> patientList = patientDao.findAll();
         for (PatientEntity patient : patientList) {
-            String firstName = patient.getFirstName();
+
             String lastName = patient.getLastName();
+            String firstName = patient.getFirstName();
             String middleInitial = patient.getMiddleInitial();
             String address = patient.getAddress();
-
             tableModel.addRow(new Object[]{firstName, lastName, middleInitial, address});
         }
-        patientListTable.setModel(tableModel);
     }
 
     public void searchFilter(TableRowSorter tableSorter) {
-
         // This function is to automatically filter the table with search keywords
         // Using TableRowSorter and and a custom RowFilter to filter keywords
         // From multiple columns
+        // SimpleDocumentListener is extending DocumentListener to simplify the implementation
+        // It is used to listen to changes in JTextField
         searchField.getDocument().addDocumentListener(new SimpleDocumentListener() {
             @Override
             public void update(DocumentEvent e) {
@@ -105,7 +108,11 @@ public class patients extends javax.swing.JFrame {
                 new String[]{"Last Name", "First Name", "Middle Initial", "Address"}
         );;
         TableRowSorter<DefaultTableModel> tableSorter = new TableRowSorter<>(tableModel);
+        List<RowSorter.SortKey> sortKeys = new ArrayList<>();
+        sortKeys.add(new RowSorter.SortKey(0, SortOrder.ASCENDING));
+        tableSorter.setSortKeys(sortKeys);
 
+        patientListTable.setModel(tableModel);
         patientListTable.setRowSorter(tableSorter);
 
         // Insert patient records from database
@@ -130,7 +137,6 @@ public class patients extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         searchField = new javax.swing.JTextField();
-        searchButton = new javax.swing.JButton();
         editButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -150,17 +156,6 @@ public class patients extends javax.swing.JFrame {
         searchField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchFieldActionPerformed(evt);
-            }
-        });
-
-        searchButton.setBackground(new java.awt.Color(0, 204, 204));
-        searchButton.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 14)); // NOI18N
-        searchButton.setForeground(new java.awt.Color(255, 255, 255));
-        searchButton.setText("SEARCH");
-        searchButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        searchButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchButtonActionPerformed(evt);
             }
         });
 
@@ -209,6 +204,8 @@ public class patients extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        patientListTable.getTableHeader().setResizingAllowed(false);
+        patientListTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(patientListTable);
 
         userField.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 18)); // NOI18N
@@ -219,7 +216,7 @@ public class patients extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addContainerGap(44, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -228,10 +225,6 @@ public class patients extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(searchField)
-                                .addGap(33, 33, 33)
-                                .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(userField)
@@ -239,8 +232,9 @@ public class patients extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 971, Short.MAX_VALUE)
-                                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(53, 53, 53))))
+                                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(searchField, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addContainerGap(53, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,12 +246,10 @@ public class patients extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(userField))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(searchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(searchField, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -277,10 +269,6 @@ public class patients extends javax.swing.JFrame {
 
         setBounds(0, 0, 1294, 727);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchButtonActionPerformed
 
     private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
 
@@ -338,7 +326,6 @@ public class patients extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton logoutButton;
     private javax.swing.JTable patientListTable;
-    private javax.swing.JButton searchButton;
     private javax.swing.JTextField searchField;
     private javax.swing.JLabel userField;
     // End of variables declaration//GEN-END:variables

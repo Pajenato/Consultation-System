@@ -53,7 +53,6 @@ com\questphil\docsystem\forms\docForm$8.class
 com\questphil\docsystem\forms\editForm.class
 com\questphil\docsystem\forms\editForm$5.class
 com\questphil\docsystem\forms\medicalClearance$15.class
-com\questphil\docsystem\patients\patients$8.class
 com\questphil\docsystem\forms\addForm$6.class
 com\questphil\docsystem\forms\medicalClearance$20.class
 com\questphil\docsystem\forms\medicationForm$2.class
@@ -62,6 +61,7 @@ com\questphil\docsystem\forms\addForm$3.class
 com\questphil\docsystem\forms\medicalCertForm$2.class
 com\questphil\docsystem\forms\medicalClearance$12.class
 com\questphil\docsystem\forms\requestForm.class
+com\questphil\docsystem\backend\dao\impl\ArchivedPatientDaoImpl.class
 com\questphil\docsystem\forms\docForm$7.class
 com\questphil\docsystem\forms\medicalCertForm$1.class
 com\questphil\docsystem\forms\medicationForm.class

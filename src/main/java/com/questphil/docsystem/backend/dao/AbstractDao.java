@@ -15,6 +15,9 @@ import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 
+/*
+* This is the abstraction of CRUD operations
+ */
 @RequiredArgsConstructor
 public abstract class AbstractDao<T, ID> {
 

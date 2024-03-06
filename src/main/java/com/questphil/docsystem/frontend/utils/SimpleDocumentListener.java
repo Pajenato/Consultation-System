@@ -7,10 +7,6 @@ package com.questphil.docsystem.frontend.utils;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-/**
- *
- * @author russe
- */
 @FunctionalInterface
 public interface SimpleDocumentListener extends DocumentListener {
 
