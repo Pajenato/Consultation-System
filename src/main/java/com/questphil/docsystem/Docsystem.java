@@ -3,7 +3,7 @@
  */
 package com.questphil.docsystem;
 
-import com.questphil.docsystem.patients.DocPatientRecords;
+import com.questphil.docsystem.frontend.forms.patients.DocPatientRecords;
 
 import java.awt.Dimension;
 import javax.swing.JFrame;

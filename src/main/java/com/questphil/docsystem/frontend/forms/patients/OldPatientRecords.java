@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.questphil.docsystem.patients;
+package com.questphil.docsystem.frontend.forms.patients;
 
 import com.questphil.docsystem.backend.dao.PatientDao;
 import com.questphil.docsystem.backend.dao.impl.PatientDaoImpl;
