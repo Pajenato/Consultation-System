@@ -3,14 +3,8 @@
  */
 package com.questphil.docsystem;
 
-import com.questphil.docsystem.backend.dao.PatientDao;
-import com.questphil.docsystem.backend.dao.impl.PatientDaoImpl;
-import com.questphil.docsystem.backend.entity.PatientEntity;
-import com.questphil.docsystem.forms.addForm;
-import com.questphil.docsystem.patients.patients;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
+import com.questphil.docsystem.patients.DocPatientRecords;
+
 import java.awt.Dimension;
 import javax.swing.JFrame;
 
@@ -25,7 +19,7 @@ public class Docsystem {
 //        form.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //        form.user = "Cashier2";
 //        form.setVisible(true);
-        patients form = new patients();
+        DocPatientRecords form = new DocPatientRecords();
         form.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         form.setMinimumSize(new Dimension(600, 900));
         form.setVisible(true);

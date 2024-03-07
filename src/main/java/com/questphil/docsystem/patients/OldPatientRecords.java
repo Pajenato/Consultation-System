@@ -9,16 +9,13 @@ import com.questphil.docsystem.backend.dao.impl.PatientDaoImpl;
 import com.questphil.docsystem.backend.entity.PatientEntity;
 import com.questphil.docsystem.backend.utils.EntityManagerProvider;
 import com.questphil.docsystem.frontend.utils.MultiColumnRowFilter;
-import com.questphil.docsystem.frontend.utils.SimpleDocumentListener;
 import jakarta.persistence.EntityManager;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import javax.swing.event.ChangeListener;
 
 import java.util.regex.PatternSyntaxException;
 import javax.swing.RowFilter;
@@ -26,14 +23,13 @@ import javax.swing.RowSorter;
 import javax.swing.SortOrder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 /**
  *
  * @author User
  */
-public class patients extends javax.swing.JFrame {
+public class OldPatientRecords extends javax.swing.JFrame {
 
     public void setTable(DefaultTableModel tableModel) {
 
@@ -52,31 +48,30 @@ public class patients extends javax.swing.JFrame {
         }
     }
 
-    public void searchFilter(TableRowSorter tableSorter) {
-        // This function is to automatically filter the table with search keywords
-        // Using TableRowSorter and and a custom RowFilter to filter keywords
-        // From multiple columns
-        // SimpleDocumentListener is extending DocumentListener to simplify the implementation
-        // It is used to listen to changes in JTextField
-        searchField.getDocument().addDocumentListener(new SimpleDocumentListener() {
-            @Override
-            public void update(DocumentEvent e) {
-                String text = searchField.getText();
-                if (text.trim().length() == 0 || text.equals("Search")) {
-                    tableSorter.setRowFilter(null);
-                } else {
-                    // Number of columns to filter = 4
-                    Set<Integer> columnIndicesToSearch = Set.of(0, 1, 2, 3);
-                    try {
-                        tableSorter.setRowFilter(new MultiColumnRowFilter(columnIndicesToSearch, text));
-                    } catch (PatternSyntaxException ex) {
-                        System.out.println(ex.getMessage());
-                    }
-                }
-            }
-        });
-    }
-
+//    public void searchFilter(TableRowSorter tableSorter) {
+//        // This function is to automatically filter the table with search keywords
+//        // Using TableRowSorter and and a custom RowFilter to filter keywords
+//        // From multiple columns
+//        // SimpleDocumentListener is extending DocumentListener to simplify the implementation
+//        // It is used to listen to changes in JTextField
+//        searchField.getDocument().addDocumentListener(new SimpleDocumentListener() {
+//            @Override
+//            public void update(DocumentEvent e) {
+//                String text = searchField.getText();
+//                if (text.trim().length() == 0 || text.equals("Search")) {
+//                    tableSorter.setRowFilter(null);
+//                } else {
+//                    // Number of columns to filter = 4
+//                    Set<Integer> columnIndicesToSearch = Set.of(0, 1, 2, 3);
+//                    try {
+//                        tableSorter.setRowFilter(new MultiColumnRowFilter(columnIndicesToSearch, text));
+//                    } catch (PatternSyntaxException ex) {
+//                        System.out.println(ex.getMessage());
+//                    }
+//                }
+//            }
+//        });
+//    }
     public void addPlaceholder() {
         searchField.addFocusListener(new FocusListener() {
             @Override
@@ -97,10 +92,25 @@ public class patients extends javax.swing.JFrame {
         });
     }
 
+    public void searchPatients() {
+        DefaultTableModel model = (DefaultTableModel) patientsTable.getModel();
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        patientsTable.setRowSorter(sorter);
+
+        String text = searchField.getText().trim();
+        if (text.length() == 0) {
+            sorter.setRowFilter(null);
+        } else {
+            // Create a RowFilter that will search in all columns
+            RowFilter<DefaultTableModel, Object> rowFilter = RowFilter.regexFilter("(?i)" + text);
+            sorter.setRowFilter(rowFilter);
+        }
+    }
+
     /**
      * Creates new form patients
      */
-    public patients() {
+    public OldPatientRecords() {
         initComponents();
 
         DefaultTableModel tableModel = new DefaultTableModel(
@@ -112,15 +122,14 @@ public class patients extends javax.swing.JFrame {
         sortKeys.add(new RowSorter.SortKey(0, SortOrder.ASCENDING));
         tableSorter.setSortKeys(sortKeys);
 
-        patientListTable.setModel(tableModel);
-        patientListTable.setRowSorter(tableSorter);
+        patientsTable.setModel(tableModel);
+        patientsTable.setRowSorter(tableSorter);
 
         // Insert patient records from database
         setTable(tableModel);
 
         // Filtering of records in the table
-        searchFilter(tableSorter);
-
+//        searchFilter(tableSorter);
         // Placeholder "Search" to hint the search bar
         addPlaceholder();
     }
@@ -140,7 +149,7 @@ public class patients extends javax.swing.JFrame {
         editButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        patientListTable = new javax.swing.JTable();
+        patientsTable = new javax.swing.JTable();
         userField = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -181,7 +190,7 @@ public class patients extends javax.swing.JFrame {
             }
         });
 
-        patientListTable.setModel(new javax.swing.table.DefaultTableModel(
+        patientsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -204,9 +213,9 @@ public class patients extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        patientListTable.getTableHeader().setResizingAllowed(false);
-        patientListTable.getTableHeader().setReorderingAllowed(false);
-        jScrollPane2.setViewportView(patientListTable);
+        patientsTable.getTableHeader().setResizingAllowed(false);
+        patientsTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(patientsTable);
 
         userField.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 18)); // NOI18N
         userField.setText("User");
@@ -299,21 +308,35 @@ public class patients extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(patients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OldPatientRecords.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(patients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OldPatientRecords.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(patients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OldPatientRecords.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(patients.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OldPatientRecords.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new patients().setVisible(true);
+                new OldPatientRecords().setVisible(true);
             }
         });
     }
@@ -325,7 +348,7 @@ public class patients extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton logoutButton;
-    private javax.swing.JTable patientListTable;
+    private javax.swing.JTable patientsTable;
     private javax.swing.JTextField searchField;
     private javax.swing.JLabel userField;
     // End of variables declaration//GEN-END:variables
