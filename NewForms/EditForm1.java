@@ -84,7 +84,7 @@ public class EditForm1 extends javax.swing.JFrame {
         saveBtn.setBackground(new java.awt.Color(45, 134, 166));
         saveBtn.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 14)); // NOI18N
         saveBtn.setForeground(new java.awt.Color(250, 250, 250));
-        saveBtn.setText("Add");
+        saveBtn.setText("Save");
         saveBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 0, true));
         saveBtn.setBorderPainted(false);
         saveBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -92,14 +92,6 @@ public class EditForm1 extends javax.swing.JFrame {
         saveBtn.setMaximumSize(new java.awt.Dimension(100, 40));
         saveBtn.setMinimumSize(new java.awt.Dimension(100, 40));
         saveBtn.setPreferredSize(new java.awt.Dimension(100, 40));
-        saveBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                saveBtnMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                saveBtnMouseExited(evt);
-            }
-        });
         saveBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveBtnActionPerformed(evt);
@@ -118,7 +110,6 @@ public class EditForm1 extends javax.swing.JFrame {
         });
 
         jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField1.setText("JAKE");
         jTextField1.setMargin(new java.awt.Insets(2, 5, 2, 5));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,7 +134,6 @@ public class EditForm1 extends javax.swing.JFrame {
         });
 
         jTextField3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jTextField3.setText("JAKE");
         jTextField3.setMargin(new java.awt.Insets(2, 5, 2, 5));
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -269,14 +259,6 @@ public class EditForm1 extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(950, 400));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void saveBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveBtnMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_saveBtnMouseEntered
-
-    private void saveBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveBtnMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_saveBtnMouseExited
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         // TODO add your handling code here:
